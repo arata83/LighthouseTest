@@ -39,7 +39,7 @@ jobs:
         env:
           SLACK_TITLE: Lighthouse ok
           SLACK_COLOR: good
-          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{ echo "JSON Content: $JSON_CONTENT" }} }'
+          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{ "JSON Content: $JSON_CONTENT" }} }'
       
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
