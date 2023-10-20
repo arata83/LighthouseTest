@@ -25,11 +25,11 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
       
-      - name: Read JSON file and convert to string
-        id: read-json
+      - name: Extract 'summary' from JSON file
+        id: extract-summary
         run: |
-          content=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json | jq -c '.')  # JSONデータを読み込んで文字列に変換
-          echo "::set-output name=json_content::$content"  # 文字列化したJSONデータを出力変数にセット
+          summary=$(echo "${{ steps.read-json.outputs.json_content }}" | jq -r '.summary')
+          echo "::set-output name=summary::$summary"
           
       - name: Slack Notification on Success
         if: success()
@@ -37,7 +37,7 @@ jobs:
         env:
           SLACK_TITLE: Lighthouse ok
           SLACK_COLOR: good
-          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{ steps.read-json.outputs.json_content }} }'
+          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "result": ${{ steps.extract-summary.outputs.summary }} }'
       
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
