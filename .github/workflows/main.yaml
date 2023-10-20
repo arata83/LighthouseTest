@@ -28,7 +28,7 @@ jobs:
       - name: Extract 'summary' from JSON file
         id: extract-summary
         run: |
-          summary=$(echo "${{ steps.read-json.outputs.json_content }}" | jq -r '.summary')
+          summary=$(echo "${{ steps.read-json.outputs.json_content }}" | jq -r '.summary | tostring')
           echo "::set-output name=summary::$summary"
           
       - name: Slack Notification on Success
