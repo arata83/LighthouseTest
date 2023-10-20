@@ -18,14 +18,14 @@ jobs:
 
       - uses: actions/checkout@v3
 
-       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          urls:
-            https://otasuketai.com/
-          budgetPath: ./budget.json
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+      - name: Audit URLs using Lighthouse
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        urls:
+          https://otasuketai.com/
+        budgetPath: ./budget.json
+        uploadArtifacts: true
+        temporaryPublicStorage: true
 
       - name: Slack Notification on Success
         if: success()
