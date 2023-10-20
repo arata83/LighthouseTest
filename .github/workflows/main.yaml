@@ -30,9 +30,9 @@ jobs:
         if: success()
         uses: rtCamp/action-slack-notify@v2.2.0
         env:
-          SLACK_TITLE: Kintai Deploy Finished(master)
+          SLACK_TITLE: Lighthouse ok
           SLACK_COLOR: good
-          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{steps.LHCIAction.outputs.manifest}} }'
+          SLACK_MESSAGE: '最高です'
       
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
