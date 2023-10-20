@@ -33,7 +33,7 @@ jobs:
       # JSONファイルの中から"summary"の値を抜き出して出力
       - name: Extract summary from JSON
         run: |
-          summary=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest | jq -r '.summary')  # "summary"の値を抜き出す
+          summary=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json | jq -r '.summary')  # "summary"の値を抜き出す
           echo "::set-output name=summary::$summary"  # 抜き出した値を出力変数にセット
 
       - name: Slack Notification on Success
