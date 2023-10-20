@@ -5,7 +5,7 @@ on:
    branches:
     - main
 env:
-  SLACK_WEBHOOK: https://hooks.slack.com/services/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
+  SLACK_WEBHOOK: https://hooks.slack.com/services/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
   SLACK_USERNAME: Lighthouse Man
   SLACK_ICON_EMOJI: ":up:"
 
@@ -32,7 +32,7 @@ jobs:
         env:
           SLACK_TITLE: Lighthouse ok
           SLACK_COLOR: good
-          SLACK_MESSAGE: '最高です'
+          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{steps.LHCIAction.outputs.manifest}} }'
       
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
