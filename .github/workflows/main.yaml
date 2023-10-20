@@ -5,7 +5,7 @@ on:
    branches:
     - main
 env:
-  SLACK_WEBHOOK: https://hooks.slack.com/services/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
+  SLACK_WEBHOOK: https://hooks.slack.com/services/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
   SLACK_USERNAME: Lighthouse Man
   SLACK_ICON_EMOJI: ":up:"
 
