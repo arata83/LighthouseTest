@@ -14,19 +14,27 @@ jobs:
   output-webhook:
     name: Slack-Notification
     runs-on: ubuntu-latest
-
+    container:
+      image: node:10.16-browsers
     steps:
 
       - uses: actions/checkout@v3
 
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          urls:
-            https://example.com/
-          uploadArtifacts: true
-          temporaryPublicStorage: true
-          outputDir: ./lhci
+      - run:
+          name: Install lighthouse
+          command: |
+            sudo npm install -g lighthouse
+      - run:
+          name: Check lighthouse
+          command: |
+            lighthouse --version
+      - run:
+          name: Run lighthouse
+          command: |
+            lighthouse https://example.com/ --output html --output json --output-path ./tomopict.json
+
+      - store_artifacts:
+          path: '.'
 
       - name: Slack Notification on Success
         if: success()
