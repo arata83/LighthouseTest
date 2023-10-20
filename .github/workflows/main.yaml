@@ -23,7 +23,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls:
-            https://uniba.jp/
+            https://example.com/
           uploadArtifacts: true
           temporaryPublicStorage: true
           outputDir: ./lhci
