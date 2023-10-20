@@ -12,13 +12,14 @@ jobs:
   output-webhook:
     runs-on: ubuntu-latest
     steps:
-    - name: Slack Notification on Start
+      - name: Slack Notification on Start
         uses: rtCamp/action-slack-notify@v2.2.0
         env:
           SLACK_TITLE: Lighthouse Start
           SLACK_COLOR: "#333333"
 
       - uses: actions/checkout@v3
+      
       - name: Use output for sending data to API.
         id: LHCIAction
         uses: ./
@@ -40,4 +41,3 @@ jobs:
         env:
           SLACK_TITLE: Kintai Deploy Failed(master)
           SLACK_COLOR: danger
-          
