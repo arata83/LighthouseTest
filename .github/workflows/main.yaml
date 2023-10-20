@@ -22,7 +22,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls:
-            https://otasuketai.com/
+            https://uniba.jp/
           budgetPath: ./budget.json
           uploadArtifacts: true
           temporaryPublicStorage: true
