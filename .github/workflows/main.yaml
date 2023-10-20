@@ -34,7 +34,7 @@ jobs:
       - name: Read JSON file and convert to string2
         id: read-json2
         run: |
-          content=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/link.json | jq -c '.')  # JSONデータを読み込んで文字列に変換
+          content=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/links.json | jq -c '.')  # JSONデータを読み込んで文字列に変換
           echo "::set-output name=link_content::$content"  # 文字列化したJSONデータを出力変数にセット
           
       - name: Slack Notification on Success
