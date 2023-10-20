@@ -31,7 +31,7 @@ jobs:
         id: read-json
         run: |
           content=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json)  # JSONファイルへのパスを指定してファイルを読み込む
-          echo "::set-output name=json_content::$content"  # ファイルの内容を出力変数にセット
+          echo "JSON_CONTENT=$content" >> $GITHUB_ENV
 
       - name: Slack Notification on Success
         if: success()
@@ -39,7 +39,7 @@ jobs:
         env:
           SLACK_TITLE: Lighthouse ok
           SLACK_COLOR: good
-          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{ steps.read-json.outputs.json_content }} }'
+          SLACK_MESSAGE: '{ "links": ${{steps.LHCIAction.outputs.links}}, "manifest": ${{ echo "JSON Content: $JSON_CONTENT" }} }'
       
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
