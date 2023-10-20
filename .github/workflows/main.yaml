@@ -26,6 +26,7 @@ jobs:
             https://uniba.jp/
           uploadArtifacts: true
           temporaryPublicStorage: true
+          outputDir: ./lhci
 
       - name: Slack Notification on Success
         if: success()
