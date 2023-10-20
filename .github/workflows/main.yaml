@@ -32,7 +32,7 @@ jobs:
           echo "::set-output name=json_content::$content"  # 文字列化したJSONデータを出力変数にセット
       
       - name: Read JSON file and convert to string2
-        id: read-json
+        id: read-json2
         run: |
           content=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/link.json | jq -c '.')  # JSONデータを読み込んで文字列に変換
           echo "::set-output name=link_content::$content"  # 文字列化したJSONデータを出力変数にセット
@@ -43,7 +43,7 @@ jobs:
         env:
           SLACK_TITLE: Lighthouse ok
           SLACK_COLOR: good
-          SLACK_MESSAGE: '{ "links": ${{steps.read-json.outputs.link_content}}, "manifest": ${{ steps.read-json.outputs.json_content }} }'
+          SLACK_MESSAGE: '{ "links": ${{steps.read-json2.outputs.link_content}}, "manifest": ${{ steps.read-json.outputs.json_content }} }'
       
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
