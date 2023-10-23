@@ -29,7 +29,7 @@ jobs:
         id: read-json
         run: |
           extracted_value=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json | jq -r '.[0].summary.performance')
-        　echo "::set-output name=extracted_value::$extracted_value"
+          echo "::set-output name=extracted_value::$extracted_value"
       - name: Read JSON file and convert to string2
         id: read-json2
         run: |
