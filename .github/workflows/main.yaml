@@ -30,6 +30,7 @@ jobs:
         run: |
           extracted_value=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json | jq -r '.[0].summary | @base64')
           echo "::set-output name=extracted_value::$extracted_value"
+          echo "Extracted value: $extracted_value"
       - name: Read JSON file and convert to string2
         id: read-json2
         run: |
