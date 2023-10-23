@@ -28,7 +28,7 @@ jobs:
       - name: Read JSON file and convert to string
         id: read-json
         run: |
-          Run extracted_value=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json | jq -r '.summary[0]')
+          extracted_value=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json | jq -r '.summary[0]')
           echo "::set-output name=extracted_value::$extracted_value"
       - name: Read JSON file and convert to string2
         id: read-json2
