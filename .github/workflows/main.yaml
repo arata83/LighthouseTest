@@ -26,7 +26,7 @@ jobs:
           temporaryPublicStorage: true
       
       - name: Read JSON file and convert to string
-        id: read-json
+        id: extract-json
         run: |
           extracted_value=$(cat /home/runner/work/LighthouseTest/LighthouseTest/.lighthouseci/manifest.json | jq -r '.[0].summary | tostring')
           echo "::set-output name=extracted_value::$extracted_value"
